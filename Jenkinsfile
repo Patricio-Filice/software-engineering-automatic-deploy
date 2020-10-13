@@ -12,5 +12,24 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      steps {
+        sh 'gradle test'
+      }
+    }
+
+    stage('Validate') {
+      steps {
+        sh 'echo "Validated"'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        sh '''gradle bootRun
+echo "Deployed"'''
+      }
+    }
+
   }
 }
