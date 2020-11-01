@@ -19,13 +19,19 @@ pipeline {
       }
     }
 
+    stage('Analyze') {
+      steps {
+        sh './gradlew sonarqube'
+      }
+    }
+
     stage('Validate') {
       steps {
         sh 'echo "Validated"'
       }
     }
 
-    stage('Deploy') {
+    stage('Deply') {
       steps {
         sh '''./gradlew bootRun
 echo "Deployed"'''
